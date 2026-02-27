@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Ticket</title>
+  <link rel="stylesheet" href="book.css">
+</head>
+<body>
+
+<div class="booking-page">
+  <h1>Book Ticket</h1>
+
+ <form action="book" method="post" class="booking-form">
+
+
+
+    <!-- Auto-filled fields -->
+    <input type="text" name="service" id="service" placeholder="Service" readonly>
+    <input type="text" name="seat" id="seat" placeholder="Seat (auto selected)" readonly>
+
+    <!-- User inputs -->
+    <input type="text" name="from" placeholder="From" required>
+    <input type="text" name="to" placeholder="To" required>
+    <input type="date" name="journey_date" required>
+    <input type="time" name="journey_time" required>
+    <input type="number" name="total" id="total" placeholder="Amount" required>
+
+    <button type="submit" class="btn">Confirm Booking</button>
+  </form>
+
+  <!-- Optional: Change seat -->
+  <a id="changeSeat" class="btn" style="display:block; text-align:center; margin-top:10px;">
+    Change Seat
+  </a>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const service = params.get("service");
+  const seat = params.get("seat");
+
+  if (service) document.getElementById("service").value = service;
+  if (seat) document.getElementById("seat").value = seat;
+
+  // Change seat link
+  if (service) {
+    document.getElementById("changeSeat").href = "seat.html?service=" + service;
+  }
+</script>
+
+</body>
+</html>

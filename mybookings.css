@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at top, #143b46, #0a1f24 60%, #06151a);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mybookings-page {
+  width: 100%;
+  max-width: 900px;
+  padding: 30px 20px 50px;
+}
+
+.mybookings-page h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.booking-card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+  margin-bottom: 16px;
+  animation: fadeUp .5s ease;
+}
+
+@keyframes fadeUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: rgba(255,255,255,.2);
+}
+
+.status.confirmed {
+  color: #20e3b2;
+  font-weight: 700;
+}
+
+.booking-card p {
+  margin: 6px 0;
+  opacity: .95;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.actions .btn {
+  flex: 1;
+  text-align: center;
+  padding: 10px 12px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff9a00, #ff512f);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(255, 120, 0, .45);
+  transition: .25s ease;
+}
+
+.actions .btn:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.actions .danger {
+  background: linear-gradient(135deg, #ff4d4f, #b71c1c);
+  box-shadow: 0 8px 18px rgba(255, 77, 79, .45);
+}

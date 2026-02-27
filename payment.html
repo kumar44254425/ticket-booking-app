@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment</title>
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+
+<div class="payment-page">
+  <h1>Choose Payment Method</h1>
+
+  <div class="pay-options">
+    <label class="pay-card">
+      <input type="radio" name="pay" value="card" checked>
+      💳 Card
+    </label>
+
+    <label class="pay-card">
+      <input type="radio" name="pay" value="upi">
+      📱 UPI
+    </label>
+
+    <label class="pay-card">
+      <input type="radio" name="pay" value="cash">
+      💵 Cash
+    </label>
+  </div>
+
+  <!-- Card -->
+  <div id="cardBox" class="pay-box">
+    <input type="text" placeholder="Card Number">
+    <input type="text" placeholder="Name on Card">
+    <div class="row">
+      <input type="text" placeholder="MM/YY">
+      <input type="password" placeholder="CVV">
+    </div>
+  </div>
+
+  <!-- UPI -->
+  <div id="upiBox" class="pay-box hidden">
+    <input type="text" placeholder="UPI ID (name@bank)">
+  </div>
+
+  <!-- Cash -->
+  <div id="cashBox" class="pay-box hidden">
+    <p>Pay cash at the counter while boarding.</p>
+  </div>
+
+<form action="sucess.html" method="get">
+  <button class="btn">Pay Now</button>
+</form>
+
+
+<script>
+  const cardBox = document.getElementById("cardBox");
+  const upiBox = document.getElementById("upiBox");
+  const cashBox = document.getElementById("cashBox");
+
+  const radios = document.querySelectorAll('input[name="pay"]');
+
+  radios.forEach(radio => {
+    radio.addEventListener("change", () => {
+      cardBox.classList.add("hidden");
+      upiBox.classList.add("hidden");
+      cashBox.classList.add("hidden");
+
+      if (radio.value === "card") cardBox.classList.remove("hidden");
+      if (radio.value === "upi") upiBox.classList.remove("hidden");
+      if (radio.value === "cash") cashBox.classList.remove("hidden");
+    });
+  });
+</script>
+
+</body>
+</html>

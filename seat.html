@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Seat</title>
+  <link rel="stylesheet" href="seat.css">
+</head>
+<body>
+
+<div class="seat-page">
+  <h1>Select Seat</h1>
+
+  <img id="vehicleImg" width="120" alt="Vehicle">
+
+  <div class="seats" id="seatLayout"></div>
+
+  <button class="btn" onclick="confirmSeat()">Confirm Seat</button>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const service = params.get("service");
+
+  const img = document.getElementById("vehicleImg");
+  if (service === "bus") img.src = "images/bus.png";
+  if (service === "train") img.src = "images/train.png";
+  if (service === "flight") img.src = "images/flight.png";
+
+  const seatLayout = document.getElementById("seatLayout");
+  let selectedSeat = null;
+
+  for (let i = 1; i <= 20; i++) {
+    let div = document.createElement("div");
+    div.className = "seat";
+    div.innerText = "S" + i;
+
+    div.onclick = () => {
+      document.querySelectorAll(".seat.selected")
+        .forEach(s => s.classList.remove("selected"));
+      div.classList.add("selected");
+      selectedSeat = div.innerText;
+    };
+
+    seatLayout.appendChild(div);
+  }
+
+  function confirmSeat() {
+    if (!selectedSeat) {
+      alert("Please select a seat");
+      return;
+    }
+    // Go to booking page with selected seat + service
+    window.location.href = "book.html?seat=" + encodeURIComponent(selectedSeat) +
+                           "&service=" + encodeURIComponent(service || "");
+  }
+</script>
+
+</body>
+</html>

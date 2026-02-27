@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Successful</title>
+  <link rel="stylesheet" href="sucess.css">
+</head>
+<body>
+
+<div class="success-page">
+  <div class="tick">✓</div>
+  <h1>Payment Successful</h1>
+  <p class="sub">Your ticket is confirmed 🎉</p>
+
+  <div class="receipt">
+    <h3>Receipt</h3>
+    <p><b>Service:</b> <span id="r_service">Bus</span></p>
+    <p><b>Seat:</b> <span id="r_seat">S5</span></p>
+    <p><b>From:</b> <span id="r_from">Hyderabad</span></p>
+    <p><b>To:</b> <span id="r_to">Bengaluru</span></p>
+    <p><b>Date:</b> <span id="r_date">2026-02-18</span></p>
+    <p><b>Time:</b> <span id="r_time">10:30</span></p>
+    <p><b>Amount Paid:</b> ₹ <span id="r_total">999</span></p>
+  </div>
+
+  <div class="actions">
+    <a href="view" class="btn">View My Bookings</a>
+    <a href="dashboard.html" class="btn secondary">Back to Dashboard</a>
+  </div>
+</div>
+
+<script>
+  // Optional: fill from URL if you pass params
+  const p = new URLSearchParams(window.location.search);
+  ["service","seat","from","to","journey_date","journey_time","total"].forEach(k => {
+    const el = document.getElementById("r_" + (k === "journey_date" ? "date" : k === "journey_time" ? "time" : k));
+    if (p.get(k) && el) el.textContent = p.get(k);
+  });
+</script>
+
+</body>
+</html>
